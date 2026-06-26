@@ -1,6 +1,6 @@
 import express, { type Express } from "express";
 import cors from "cors";
-import pinoHttp, { type Options } from "pino-http";
+import { pinoHttp, type Options } from "pino-http";
 import type { IncomingMessage, ServerResponse } from "http";
 
 import router from "./routes";
