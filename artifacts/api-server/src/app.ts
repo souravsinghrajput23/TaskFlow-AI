@@ -1,38 +1,17 @@
-import express, { type Express } from "express";
+import express, { type Express, type Request, type Response, type NextFunction } from "express";
 import cors from "cors";
-import pinoHttpModule from "pino-http";
-import type { Options } from "pino-http";
 import type { IncomingMessage, ServerResponse } from "http";
 
 import router from "./routes";
 import { logger } from "./lib/logger";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const pinoHttp = (pinoHttpModule as any).default ?? pinoHttpModule;
-
 const app: Express = express();
 
-const loggerOptions: Options = {
-  logger,
-
-  serializers: {
-    req(req: IncomingMessage & { id?: string }) {
-      return {
-        id: req.id,
-        method: req.method,
-        url: req.url?.split("?")[0],
-      };
-    },
-
-    res(res: ServerResponse) {
-      return {
-        statusCode: res.statusCode,
-      };
-    },
-  },
-};
-
-app.use(pinoHttp(loggerOptions));
+// Simple request logger without pino-http
+app.use((req: Request, res: Response, next: NextFunction) => {
+  logger.info({ method: req.method, url: req.url?.split("?")[0] }, "incoming request");
+  next();
+});
 
 app.use(cors());
 
