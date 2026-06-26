@@ -1,0 +1,198 @@
+Build a complete, functional, and responsive AI-Integrated SaaS Project Management Web App.
+Use the temporary brand name TaskFlow. Keep the brand name in a central configuration file or component for easy updates.
+
+Important project goal
+This is a beginner-friendly MVP for demonstration in a video tutorial. The app should be:
+
+Simple to understand
+Visually professional
+Fully functional
+Mobile responsive
+Connected to a cloud backend (e.g., Supabase or Firebase)
+Ready to deploy on a Node.js server (e.g., Hostinger)
+Easy to explain in a tutorial video
+Do not make the project unnecessarily complex.
+1. Required technology stack
+Use the following stack:
+
+React
+TypeScript
+Vite
+Tailwind CSS
+React Router
+Cloud backend SDK (e.g., Supabase JavaScript SDK)
+React Hook Form
+Zod validation
+Lucide React icons
+Node.js
+Express only for serving the production build on Hostinger
+Do not use:
+
+Complex or heavyweight state management (e.g., Redux)
+Server-side rendering frameworks
+Backend databases other than the chosen cloud backend
+The backend must handle:
+
+User authentication
+User sessions
+Role-based authorization
+Projects
+Tasks
+Teams and members
+AI-driven task suggestions and scheduling
+2. Environment variables
+Create an .env.example file containing:
+
+VITE_BACKEND_URL=  
+VITE_BACKEND_ANON_KEY=  
+Use these to initialize the backend client. Do not expose service keys on the frontend.
+
+3. User roles
+Keep user roles simple:
+
+member
+admin
+Member capabilities:
+Register and log in
+View assigned projects and tasks
+Update task status and details
+Collaborate via comments
+Admin capabilities:
+Manage projects and teams
+Assign tasks to members
+Access AI insights and recommendations
+Manage user roles
+4. Authentication
+Use email and password authentication via the backend. Include:
+
+Registration page
+Login page
+Forgot password & reset password pages
+Logout functionality
+Session persistence
+Protected routes based on roles
+Registration fields:
+
+Full name
+Email
+Password and confirmation
+Members get assigned member role by default. Admins are assigned manually via the backend.
+
+5. Database structure
+Design a schema with tables/collections for:
+
+Users (with roles)
+Projects (id, name, description, created_at, updated_at)
+Tasks (id, project_id, title, description, status, assigned_to, due_date, priority, created_at, updated_at)
+Teams (id, name, members)
+Comments (task_id, author_id, content, created_at)
+6. AI features
+Integrate AI to enhance project management:
+
+Intelligent task prioritization based on deadlines and dependencies
+Automated scheduling suggestions to optimize team workload
+Natural language task creation from plain text inputs
+Predictive analytics on project progress and risk alerts
+Personalized productivity insights for each user
+7. Security and access control
+Implement role-based access control with policies so that:
+
+Members can only view and modify their own tasks and assigned projects
+Admins have full access to all data and management features
+Public visitors cannot access private data or management routes
+8. Seed data
+Provide sample data for demo purposes:
+
+A few projects with tasks assigned to demo users
+Sample team members
+Example AI-generated task suggestions
+9. Public application pages
+Home page
+Overview of projects and tasks assigned to the logged-in user
+Quick stats (tasks due soon, overdue tasks)
+Navigation to projects, teams, and AI insights
+Projects page
+List projects with search and filter
+View project details and tasks
+Task details page
+View task info, status updates, comments, and AI suggestions
+Admin dashboard
+Manage users, projects, teams
+View AI analytics and system health
+10. User interface design
+Use a modern, professional tech design with a clean layout:
+
+Light color palette with strong accent colors
+Clear typography and spacing
+Responsive and mobile-friendly
+Accessible color contrast
+Minimal animations
+11. Validation and error handling
+Use Zod and React Hook Form for:
+
+Email validation
+Required fields
+Password complexity
+Task due date validation
+Handle backend errors gracefully with user-friendly messages and logging.
+
+12. Routing
+Use routes like:
+
+/  
+/projects  
+/projects/:projectId  
+/tasks/:taskId  
+/login  
+/register  
+/dashboard  
+/admin  
+/admin/users  
+/admin/projects  
+/admin/teams  
+Include 404 and role-protected routes.
+
+13. Production and deployment
+Prepare the app for deployment on a Node.js server (Hostinger):
+
+Use Express to serve the built frontend
+Support SPA fallback routing
+Include health endpoint returning JSON status
+Use environment variables for backend connection
+14. Documentation
+Create a detailed README.md including:
+
+Local setup instructions
+Backend configuration and setup
+Seed data import
+Admin creation steps
+Deployment instructions for Hostinger
+Environment variable requirements
+Testing instructions
+15. MVP limitations
+Exclude complex features such as:
+
+Real-time collaboration and presence
+Video conferencing
+Advanced analytics dashboards
+External integrations (Slack, email, calendar)
+Payment processing
+16. Testing requirements
+Test all core flows including:
+
+User registration and login
+Project and task creation, update, deletion
+AI suggestion accuracy and display
+Admin user management
+Proper route protection
+17. Final delivery
+Before coding, provide a short implementation and database plan. After completion, deliver:
+
+Summary of implemented features
+List of key files
+Required environment variables
+Backend setup instructions
+Admin user setup instructions
+Deployment guide
+Known limitations and future improvements
+Build the full application using sensible defaults without repeatedly asking questions.
